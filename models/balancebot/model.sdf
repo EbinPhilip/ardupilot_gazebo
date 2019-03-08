@@ -1,0 +1,129 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+  <model name='Balance Bot'>
+    <static>false</static>
+    <link name='body'>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0.049784 0.17627 0.17521 0 -0 0</pose>
+        <mass>1.3633</mass>
+        <inertia>
+          <ixx>0.018248</ixx>
+          <ixy>-1.3083e-05</ixy>
+          <ixz>-2.9568e-05</ixz>
+          <iyy>0.01363</iyy>
+          <iyz>9.5577e-06</iyz>
+          <izz>0.0072061</izz>
+        </inertia>
+      </inertial>
+      <collision name='body_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://Balance Bot/meshes/body.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='body_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://Balance Bot/meshes/body.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <sensor name="imu_sensor" type="imu">
+        <pose>0 0 0 3.141593 0 0</pose>
+        <always_on>1</always_on>
+        <update_rate>1000.0</update_rate>
+      </sensor>
+    </link>
+    <link name='left wheel'>
+      <pose frame=''>0.049859 0.2976 0.05 1.5708 -0.59094 0</pose>
+      <inertial>
+        <pose frame=''>0 2e-06 -0.029584 0 -0 0</pose>
+        <mass>0.13</mass>
+        <inertia>
+          <ixx>0.00011146</ixx>
+          <ixy>1.5779e-13</ixy>
+          <ixz>-3.5407e-13</ixz>
+          <iyy>0.00011146</iyy>
+          <iyz>-6.474e-09</iyz>
+          <izz>0.00019997</izz>
+        </inertia>
+      </inertial>
+      <collision name='left wheel_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://Balance Bot/meshes/left wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left wheel_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://Balance Bot/meshes/left wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='left wheel axis' type='revolute'>
+      <child>left wheel</child>
+      <parent>body</parent>
+      <axis>
+        <xyz>-2e-06 1 3e-06</xyz>
+       
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='right wheel'>
+      <pose frame=''>0.049859 0 0.05 -1.5708 1.231 -0</pose>
+      <inertial>
+        <pose frame=''>0 2e-06 0.020416 0 -0 0</pose>
+        <mass>0.13</mass>
+        <inertia>
+          <ixx>0.00011146</ixx>
+          <ixy>1.5779e-13</ixy>
+          <ixz>-3.5407e-13</ixz>
+          <iyy>0.00011146</iyy>
+          <iyz>-6.474e-09</iyz>
+          <izz>0.00019997</izz>
+        </inertia>
+      </inertial>
+      <collision name='right wheel_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://Balance Bot/meshes/right wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right wheel_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://Balance Bot/meshes/right wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='right wheel axis' type='revolute'>
+      <child>right wheel</child>
+      <parent>body</parent>
+      <axis>
+        <xyz>-3e-06 1 -1e-06</xyz>
+
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <plugin name='BalanceBotplugin' filename='libBalanceBotplugin.so'/>
+  </model>
+</sdf>
